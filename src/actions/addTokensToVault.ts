@@ -31,6 +31,7 @@ interface AddTokensToVaultParams {
   wallet: Wallet;
   vault: PublicKey;
   nfts: Token2Add[];
+  isUninitialized?: boolean;
 }
 
 interface AddTokensToVaultResponse {
@@ -43,6 +44,7 @@ export const addTokensToVault = async ({
   wallet,
   vault,
   nfts,
+  isUninitialized = false,
 }: AddTokensToVaultParams): Promise<AddTokensToVaultResponse> => {
   const txOptions = { feePayer: wallet.publicKey };
   const safetyDepositTokenStores: SafetyDepositTokenStore[] = [];
@@ -89,6 +91,7 @@ export const addTokensToVault = async ({
       wallet,
       txs: tokenTxBatch.transactions,
       signers: tokenTxBatch.signers,
+      isUninitialized,
     });
 
     allBatch.push(tokenTxBatch);

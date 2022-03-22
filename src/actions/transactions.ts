@@ -23,7 +23,7 @@ export const sendTransaction = async ({
   txs,
   signers = [],
   options,
-  isUninitialized = true,
+  isUninitialized = false,
 }: SendTransactionParams): Promise<string> => {
   let tx = Transaction.fromCombined(txs, { feePayer: wallet.publicKey });
   tx.recentBlockhash = (await connection.getRecentBlockhash()).blockhash;

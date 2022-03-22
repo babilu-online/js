@@ -14,6 +14,7 @@ interface CreateVaultParams {
   wallet: Wallet;
   priceMint: PublicKey;
   externalPriceAccount: PublicKey;
+  isUninitialized?: boolean;
 }
 
 interface CreateVaultResponse {
@@ -32,6 +33,7 @@ export const createVault = async ({
   wallet,
   priceMint = NATIVE_MINT,
   externalPriceAccount,
+  isUninitialized = false,
 }: CreateVaultParams): Promise<CreateVaultResponse> => {
   const accountRent = await connection.getMinimumBalanceForRentExemption(AccountLayout.span);
 
@@ -115,6 +117,7 @@ export const createVault = async ({
     signers: txBatch.signers,
     txs: txBatch.transactions,
     wallet,
+    isUninitialized,
   });
 
   return {

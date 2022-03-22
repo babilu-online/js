@@ -23,6 +23,7 @@ import { TransactionsBatch } from '../../utils/transactions-batch';
 interface CreateExternalPriceAccountParams {
   connection: Connection;
   wallet: Wallet;
+  isUninitialized?: boolean;
 }
 
 interface CreateExternalPriceAccountResponse {
@@ -36,6 +37,7 @@ interface CreateExternalPriceAccountResponse {
 export const createExternalPriceAccount = async ({
   connection,
   wallet,
+  isUninitialized = false,
 }: CreateExternalPriceAccountParams): Promise<CreateExternalPriceAccountResponse> => {
   const txBatch = new TransactionsBatch({ transactions: [] });
   const txOptions: TransactionCtorFields = { feePayer: wallet.publicKey };
@@ -75,6 +77,7 @@ export const createExternalPriceAccount = async ({
     signers: txBatch.signers,
     txs: txBatch.transactions,
     wallet,
+    isUninitialized,
   });
 
   return {
