@@ -35,6 +35,7 @@ interface AddTokensToVaultParams {
 
 interface AddTokensToVaultResponse {
   safetyDepositTokenStores: SafetyDepositTokenStore[];
+  txBatch: Array<TransactionsBatch>;
 }
 
 export const addTokensToVault = async ({
@@ -49,6 +50,7 @@ export const addTokensToVault = async ({
   const vaultAuthority = await Vault.getPDA(vault);
   const accountRent = await connection.getMinimumBalanceForRentExemption(AccountLayout.span);
 
+  const allBatch: Array<TransactionsBatch> = [];
   for (const nft of nfts) {
     const tokenTxBatch = new TransactionsBatch({ transactions: [] });
     const safetyDepositBox = await SafetyDepositBox.getPDA(vault, nft.tokenMint);
@@ -89,6 +91,7 @@ export const addTokensToVault = async ({
       signers: tokenTxBatch.signers,
     });
 
+    allBatch.push(tokenTxBatch);
     safetyDepositTokenStores.push({
       txId,
       tokenStoreAccount: tokenStoreAccount.publicKey,
@@ -97,5 +100,5 @@ export const addTokensToVault = async ({
     });
   }
 
-  return { safetyDepositTokenStores };
+  return { safetyDepositTokenStores, txBatch: allBatch };
 };

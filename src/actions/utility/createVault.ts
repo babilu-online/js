@@ -22,6 +22,7 @@ interface CreateVaultResponse {
   fractionMint: PublicKey;
   redeemTreasury: PublicKey;
   fractionTreasury: PublicKey;
+  txBatch: TransactionsBatch;
 }
 
 // This command creates the external pricing oracle a vault
@@ -122,5 +123,6 @@ export const createVault = async ({
     fractionMint: fractionMint.publicKey,
     redeemTreasury: redeemTreasury.publicKey,
     fractionTreasury: fractionTreasury.publicKey,
+    txBatch,
   };
 };

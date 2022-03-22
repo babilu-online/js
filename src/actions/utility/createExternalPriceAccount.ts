@@ -29,6 +29,7 @@ interface CreateExternalPriceAccountResponse {
   txId: TransactionSignature;
   externalPriceAccount: PublicKey;
   priceMint: PublicKey;
+  txBatch: TransactionsBatch;
 }
 
 // This command creates the external pricing oracle
@@ -80,5 +81,6 @@ export const createExternalPriceAccount = async ({
     txId,
     externalPriceAccount: externalPriceAccount.publicKey,
     priceMint: NATIVE_MINT,
+    txBatch,
   };
 };
