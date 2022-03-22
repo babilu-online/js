@@ -10,6 +10,7 @@ export interface SendTransactionParams {
   txs: Transaction[];
   signers?: Keypair[];
   options?: SendOptions;
+  isUninitialized?: boolean;
 }
 
 /**
@@ -22,9 +23,13 @@ export const sendTransaction = async ({
   txs,
   signers = [],
   options,
+  isUninitialized = true,
 }: SendTransactionParams): Promise<string> => {
   let tx = Transaction.fromCombined(txs, { feePayer: wallet.publicKey });
   tx.recentBlockhash = (await connection.getRecentBlockhash()).blockhash;
+  if (isUninitialized) {
+    return '';
+  }
 
   if (signers.length) {
     tx.partialSign(...signers);
