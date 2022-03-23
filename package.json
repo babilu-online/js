@@ -1,6 +1,6 @@
 {
   "packageManager": "yarn@3.1.1",
-  "name": "@babilu/metaplex-js",
+  "name": "@babilu-online/metaplex-js",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
     "/src"
   ],
   "author": "babilu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Metaplex JavaScript API",
   "keywords": [
     "nft",
@@ -119,7 +119,16 @@
   },
   "directories": {
     "example": "examples",
+    "lib": "lib",
     "test": "test"
   },
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babilu-online/metaplex-foundation-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/babilu-online/metaplex-foundation-js/issues"
+  },
+  "homepage": "https://github.com/babilu-online/metaplex-foundation-js#readme"
 }
