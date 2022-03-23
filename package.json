@@ -12,7 +12,8 @@
     "/lib",
     "/src"
   ],
-  "version": "1.4.12",
+  "author": "babilu",
+  "version": "1.0.0",
   "description": "Metaplex JavaScript API",
   "keywords": [
     "nft",
