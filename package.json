@@ -1,6 +1,6 @@
 {
   "packageManager": "yarn@3.1.1",
-  "name": "@metaplex/js",
+  "name": "@babilu/metaplex-js",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -12,8 +12,7 @@
     "/lib",
     "/src"
   ],
-  "version": "4.12.0",
-  "license": "MIT",
+  "version": "1.4.12",
   "description": "Metaplex JavaScript API",
   "keywords": [
     "nft",
@@ -21,11 +20,6 @@
     "solana",
     "blockchain"
   ],
-  "author": "Metaplex Maintainers <contact@metaplex.com>",
-  "homepage": "https://metaplex.com",
-  "repository": {
-    "url": "https://github.com/metaplex/js.git"
-  },
   "scripts": {
     "doc": "typedoc",
     "doc:watch": "typedoc --watch",
@@ -121,5 +115,10 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "ISC"
 }
